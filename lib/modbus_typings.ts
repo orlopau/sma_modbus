@@ -29,6 +29,18 @@ export namespace ModbusDatatype {
             case ModbusDatatype.uint64: return 4;
         }
     }
+
+    export function fromBuffer(dtype: ModbusDatatype, buffer: Buffer){
+        switch (dtype) {
+            case ModbusDatatype.int16: return buffer.readInt16BE(0);
+            case ModbusDatatype.int32: return buffer.readInt32BE(0);
+            case ModbusDatatype.string: return buffer.toString();
+            case ModbusDatatype.uint16: return buffer.readUInt16BE(0);
+            case ModbusDatatype.uint32: return buffer.readUInt32BE(0);
+            case ModbusDatatype.uint64: return buffer.readUIntBE(0, 8);
+            default: return undefined;
+        }
+    }
 }
 
 export enum ModbusPermission {
