@@ -1,3 +1,5 @@
+import {Uint64BE} from "int64-buffer";
+
 export enum ModbusDatatype {
     acc32,
     acc64,
@@ -30,14 +32,14 @@ export namespace ModbusDatatype {
         }
     }
 
-    export function fromBuffer(dtype: ModbusDatatype, buffer: Buffer){
+    export function fromBuffer(dtype: ModbusDatatype, buffer: Buffer): number | string | undefined {
         switch (dtype) {
             case ModbusDatatype.int16: return buffer.readInt16BE(0);
             case ModbusDatatype.int32: return buffer.readInt32BE(0);
             case ModbusDatatype.string: return buffer.toString();
             case ModbusDatatype.uint16: return buffer.readUInt16BE(0);
             case ModbusDatatype.uint32: return buffer.readUInt32BE(0);
-            case ModbusDatatype.uint64: return buffer.readUIntBE(0, 8);
+            case ModbusDatatype.uint64: return new Uint64BE(buffer).toNumber();
             default: return undefined;
         }
     }
