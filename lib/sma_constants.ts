@@ -1,4 +1,4 @@
-export let DeviceTypes = {
+export let DeviceTypes: { [key: number]: string } = {
     9225: "SB5000SE-10",
     9226: "SB3600SE-10",
     9074: "SB3000TL-21",
