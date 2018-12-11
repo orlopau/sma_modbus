@@ -1,5 +1,5 @@
 import {ModbusDatatype} from "./modbus_typings";
-import {readModbus} from "./modbus_util";
+import {ModbusConnection} from "./modbus_util";
 import {DeviceTypes} from "./sma_constants";
 
 interface SMADevice {
@@ -11,17 +11,18 @@ interface SMADevice {
 }
 
 export abstract class BasicSMADevice implements SMADevice{
-    private readonly ipAddress: string;
-    private readonly modbusPort: number;
+    private connection: ModbusConnection;
+    private ipAddress: string;
 
-    constructor(ipAddress: string, modbusPort = 502) {
+    protected constructor(ipAddress: string, modbusPort = 502) {
+        this.connection = new ModbusConnection(ipAddress, modbusPort, 126);
         this.ipAddress = ipAddress;
-        this.modbusPort = modbusPort;
     }
 
     async getDeviceType(): Promise<string> {
-        let id: number = await readModbus(this.ipAddress, 40037, ModbusDatatype.string, 8, this.modbusPort);
-        return DeviceTypes[id];
+        let id: string = await this.connection.readModbus(40037, ModbusDatatype.string, 8);
+        console.log(id.split(""));
+        return DeviceTypes[Number(id)];
     }
 
     getIpAddress(): string {
@@ -29,10 +30,14 @@ export abstract class BasicSMADevice implements SMADevice{
     }
 
     async readModbus(register: number, datatype: ModbusDatatype, length?: number): Promise<any> {
-        return readModbus(this.ipAddress, register, datatype, length, this.modbusPort);
+        return this.connection.readModbus(register, datatype, length);
     }
 
     async getPower(): Promise<number> {
         return await this.readModbus(40200, ModbusDatatype.int16);
+    }
+
+    close(){
+        this.connection.close();
     }
 }
