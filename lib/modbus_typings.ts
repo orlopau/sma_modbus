@@ -40,6 +40,8 @@ export namespace ModbusDatatype {
             case ModbusDatatype.uint16: return buffer.readUInt16BE(0);
             case ModbusDatatype.uint32: return buffer.readUInt32BE(0);
             case ModbusDatatype.uint64: return new Uint64BE(buffer).toNumber();
+            case ModbusDatatype.acc64: return new Uint64BE(buffer).toNumber();
+            case ModbusDatatype.acc32: return buffer.readUInt32BE(0);
             default: return undefined;
         }
     }

@@ -11,8 +11,8 @@ interface SMADevice {
 }
 
 export abstract class BasicSMADevice implements SMADevice{
-    private ipAddress: string;
-    private modbusPort: number;
+    private readonly ipAddress: string;
+    private readonly modbusPort: number;
 
     constructor(ipAddress: string, modbusPort = 502) {
         this.ipAddress = ipAddress;
@@ -30,5 +30,9 @@ export abstract class BasicSMADevice implements SMADevice{
 
     async readModbus(register: number, datatype: ModbusDatatype, length?: number): Promise<any> {
         return readModbus(this.ipAddress, register, datatype, length, this.modbusPort);
+    }
+
+    async getPower(): Promise<number> {
+        return await this.readModbus(40200, ModbusDatatype.int16);
     }
 }
