@@ -36,7 +36,7 @@ export namespace ModbusDatatype {
         switch (dtype) {
             case ModbusDatatype.int16: return buffer.readInt16BE(0);
             case ModbusDatatype.int32: return buffer.readInt32BE(0);
-            case ModbusDatatype.string: return buffer.toString();
+            case ModbusDatatype.string: return buffer.toString("utf-8").replace(/\0/g, '');
             case ModbusDatatype.uint16: return buffer.readUInt16BE(0);
             case ModbusDatatype.uint32: return buffer.readUInt32BE(0);
             case ModbusDatatype.uint64: return new Uint64BE(buffer).toNumber();
