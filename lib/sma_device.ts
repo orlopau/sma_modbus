@@ -14,7 +14,7 @@ export abstract class BasicSMADevice implements SMADevice{
     private connection: ModbusConnection;
     private ipAddress: string;
 
-    protected constructor(ipAddress: string, modbusPort = 502) {
+    constructor(ipAddress: string, modbusPort = 502) {
         this.connection = new ModbusConnection(ipAddress, modbusPort, 126);
         this.ipAddress = ipAddress;
     }
