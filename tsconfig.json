@@ -6,10 +6,12 @@
     "declaration": true,
     "outDir": "./dist",
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "inlineSourceMap": true
   },
   "include": [
-    "lib/**/*"
+    "lib/**/*",
+    "examples/*"
   ],
   "exclude": [
     "node_modules"
