@@ -15,6 +15,9 @@
     "modbus",
     "pv"
   ],
+  "files": [
+    "./dist"
+  ],
   "author": "orlopau",
   "license": "MIT",
   "bugs": {
