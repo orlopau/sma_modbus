@@ -2,7 +2,7 @@
   "name": "sma_modbus",
   "version": "1.0.0",
   "description": "Library for accessing SMA devices by modbus",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "test": "mocha -r ts-node/register ./test/**/*.ts"
   },
