@@ -1,6 +1,6 @@
-import {SunnyIsland} from "../lib/devices/sunny_island";
+import sma from "../index"
 
-let device = new SunnyIsland("192.168.188.60", 502);
+let device = new sma.Devices.SunnyIsland("192.168.188.60", 502);
 
 setInterval(() => {
     device.getBatteryPercentage().then((data) => {
