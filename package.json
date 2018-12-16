@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/orlopau/semp.git"
+    "url": "git+https://github.com/orlopau/sma_modbus.git"
   },
   "keywords": [
     "sma",
@@ -19,9 +19,9 @@
   "author": "orlopau",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/orlopau/semp/issues"
+    "url": "https://github.com/orlopau/sma_modbus/issues"
   },
-  "homepage": "https://github.com/orlopau/semp",
+  "homepage": "https://github.com/orlopau/sma_modbus",
   "dependencies": {
     "int64-buffer": "^0.99.1007",
     "loglevel": "^1.6.1",
