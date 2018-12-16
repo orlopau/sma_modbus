@@ -1,4 +1,10 @@
-import {readModbus} from "../lib/modbus_util"
-import {ModbusDatatype} from "../lib/modbus_typings";
+import {SunnyIsland} from "../lib/devices/sunny_island";
 
-readModbus("192.168.188.60", 40037, ModbusDatatype.string, 8).then(result => console.log(result));
+let device = new SunnyIsland("192.168.188.60", 502);
+
+setInterval(() => {
+    device.getBatteryPercentage().then((data) => {
+        console.log(data);
+    });
+
+}, 1000);
