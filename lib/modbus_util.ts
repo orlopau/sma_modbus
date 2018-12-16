@@ -3,7 +3,7 @@ import "buffer";
 import {ModbusDatatype} from "./modbus_typings";
 import log from "loglevel";
 
-log.setLevel(log.levels.TRACE);
+log.setLevel(log.levels.WARN);
 
 export class ModbusConnection {
     private client: ModbusRTU;
@@ -26,8 +26,6 @@ export class ModbusConnection {
     }
 
     isOpen(): boolean {
-        // @ts-ignore
-        console.log(this.client.isOpen);
         // @ts-ignore
         return <boolean>this.client.isOpen;
     }
