@@ -1,11 +1,3 @@
-import {SunnyBoy} from "./lib/devices/sunny_boy";
-import {SunnyIsland} from "./lib/devices/sunny_island";
-import {BasicSMADevice} from "./lib/sma_device";
-
-export default {
-    Devices: {
-        SunnyBoy,
-        SunnyIsland,
-        BasicSMADevice
-    }
-}
+export {SunnyBoy} from "./lib/devices/sunny_boy";
+export {SunnyIsland} from "./lib/devices/sunny_island";
+export {BasicSMADevice} from "./lib/sma_device";
