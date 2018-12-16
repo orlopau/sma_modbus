@@ -4,7 +4,8 @@
   "description": "Library for accessing SMA devices by modbus",
   "main": "./dist/index.js",
   "scripts": {
-    "test": "mocha -r ts-node/register ./test/**/*.ts"
+    "test": "mocha -r ts-node/register ./test/**/*.ts",
+    "prepublish": "tsc"
   },
   "repository": {
     "type": "git",
@@ -14,9 +15,6 @@
     "sma",
     "modbus",
     "pv"
-  ],
-  "files": [
-    "./dist"
   ],
   "author": "orlopau",
   "license": "MIT",
