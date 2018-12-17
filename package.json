@@ -36,5 +36,8 @@
     "@types/loglevel": "^1.5.3",
     "@types/node": "^10.12.12",
     "typescript": "^3.2.2"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
