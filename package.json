@@ -3,6 +3,7 @@
   "version": "2.1.0",
   "description": "Library for accessing SMA devices by modbus",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "test": "mocha -r ts-node/register ./test/**/*.ts",
     "prepublish": "tsc"
