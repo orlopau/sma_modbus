@@ -34,7 +34,7 @@ export abstract class BasicSMADevice implements SMADevice{
     }
 
     async getPower(): Promise<number> {
-        return await this.readModbus(40200, ModbusDatatype.int16);
+        return 10 * await this.readModbus(40200, ModbusDatatype.int16);
     }
 
     close(){

@@ -7,7 +7,7 @@ export class SunnyBoy extends BasicSMADevice{
     }
 
     async getLifetimeWh(): Promise<number> {
-        return await super.readModbus(40303, ModbusDatatype.acc64);
+        return await super.readModbus(40303, ModbusDatatype.acc64) / 1000;
     }
 
 }
