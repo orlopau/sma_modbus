@@ -34,14 +34,37 @@ export namespace ModbusDatatype {
 
     export function fromBuffer(dtype: ModbusDatatype, buffer: Buffer): number | string | undefined {
         switch (dtype) {
-            case ModbusDatatype.int16: return buffer.readInt16BE(0);
-            case ModbusDatatype.int32: return buffer.readInt32BE(0);
+            case ModbusDatatype.int16:
+                if (buffer.equals(Buffer.from("8000", "hex"))){
+                    return undefined;
+                }else{
+                    return buffer.readInt16BE(0);
+                }
+            case ModbusDatatype.int32:
+                if(buffer.equals(Buffer.from("8000 0000", "hex"))){
+                    return undefined;
+                }else{
+                    return buffer.readInt32BE(0);
+                }
             case ModbusDatatype.string: return buffer.toString("utf-8").replace(/\0/g, '');
-            case ModbusDatatype.uint16: return buffer.readUInt16BE(0);
-            case ModbusDatatype.uint32: return buffer.readUInt32BE(0);
-            case ModbusDatatype.uint64: return new Uint64BE(buffer).toNumber();
-            case ModbusDatatype.acc64: return new Uint64BE(buffer).toNumber();
-            case ModbusDatatype.acc32: return buffer.readUInt32BE(0);
+            case ModbusDatatype.uint16:
+                if(buffer.equals(Buffer.from("FFFF", "hex"))){
+                    return undefined;
+                }else{
+                    return buffer.readUInt16BE(0)
+                }
+            case ModbusDatatype.uint32 || ModbusDatatype.acc32:
+                if(buffer.equals(Buffer.from("FFFFFFFF", "hex"))){
+                    return undefined;
+                }else{
+                    return buffer.readUInt32BE(0)
+                }
+            case ModbusDatatype.uint64 || ModbusDatatype.acc64:
+                if(buffer.equals(Buffer.from("FFFFFFFFFFFFFFFF", "hex"))){
+                    return undefined;
+                }else{
+                    return new Uint64BE(buffer).toNumber()
+                }
             default: return undefined;
         }
     }
