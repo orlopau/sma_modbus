@@ -1,6 +1,6 @@
 {
   "name": "sma_modbus",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Library for accessing SMA devices by modbus",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
