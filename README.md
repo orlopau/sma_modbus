@@ -1,4 +1,5 @@
 # SMA Modbus
+[![NPM](https://nodei.co/npm/sma_modbus.png)](https://nodei.co/npm/sma_modbus/)
 
 ## Introduction
 
