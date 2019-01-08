@@ -7,7 +7,7 @@ The module provides easy access to the data provided by SMA devices with ModBus 
 
 It automatically establishes a new connection on disconnect, and parses incoming byte data to their respective format.
 
-**Typescript** definitions are included out-of-the-box.
+##### Typescript definitions are included out-of-the-box.
 
 ## Usage
 
@@ -26,4 +26,16 @@ under "Downloads" -> "Technical Information" -> "Modbus Interface". An Excel fil
 
 ## Examples
 
-Detailed examples can be found in the examples folder on GitHub.
+```javascript
+// require or import can be used to acquire the package
+const SMA = require('sma_modbus');
+let sunnyIsland = new SMA.SunnyIsland("192.168.188.60", 502);
+sunnyIsland.getPower().then((x) => {
+        console.log("Power: " + x + " W");
+});
+
+// Modbus addresses and datatypes can be found in the SMA docs
+sunnyIsland.readModbus(40073, SMA.ModbusDatatype.uint16).then((x) => {
+    console.log("Interface speed: " + x + " Mb/s");
+});
+```
