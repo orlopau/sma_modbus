@@ -32,7 +32,7 @@ export class ModbusConnection {
 
     close() {
         // @ts-ignore
-        this.client.close()
+        this.client.close(()=>{});
     }
 
     async readModbus(register: number, dtype: ModbusDatatype, length?: number): Promise<any> {
